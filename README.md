@@ -1,43 +1,39 @@
-# YaMDb
+### YaMDb
 
+## Описание
 Проект YaMDb позволяет собирать отзывы и комментарии к произведениям. У пользователей есть возможность оставить свой отзыв, поставить произведению оценку, комментировать отзывы.
 Произведения могут быть сгруппированы по категориями (например, "Книги", "Фильмы", "Музыка"). Проект не хранит сами произведения.
 
 Внесение в базу данных произведений, создание категорий и жанров доступно только администратору.
 
-## Установка
+## Запуск проекта
 
 * Клонировать репозиторий, перейти к репозиторию в командной строке
 
-```bash
-git clone https://github.com/BettleLfy/api_yamdb.git
 ```
-
-```bash
+git clone git@github.com:Aleksey-Lyap/api_yamdb.git
+```
+```
 cd api_yamdb
 ```
 * Создать и активировать виртуальное окружение
-```bash
-python3 -m venv env
 ```
-
-* Для Linux/MacOS: `source env/bin/activate`
-* Если у вас Windows `source env/scripts/activate`
-
-```bash
-python3 -m pip install --upgrade pip
+python3 -m venv venv
 ```
+* Для Linux/MacOS: `source venv/bin/activate`
+* Если у вас Windows `source venv/Scripts/activate`
 
 * Установить зависимости из requirements.txt
-```bash
+```
+python3 -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 * Выполнить миграции
-```bash
+```
 python3 manage.py migrate
 ```
 * Запустить проект
-```bash
+```
 python3 manage.py runserver
 ```
 
@@ -127,7 +123,3 @@ python3 manage.py runserver
     Пользователь отправляет POST-запрос с параметрами `username` и `confirmation_code` на эндпоинт `/api/v1/auth/token/`, в ответе на запрос ему приходит `token` (`JWT-токен`).
 * Полученный токен следует отправлять с каждым запросом
 * После регистрации и получения токена пользователь может отправить PATCH-запрос на эндпоинт `/api/v1/users/me/` и заполнить поля в своём профайле (описание полей — в документации).
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
